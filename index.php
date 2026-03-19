@@ -47,9 +47,13 @@ require_once __DIR__ . '/includes/header.php';
 
                 <a href="<?php echo BASE_URL; ?>/prodotto.php?id=<?php echo (int)$prodotto['id']; ?>" class="card-link">
                     <div class="media-container">
-                        <img
-                            src="<?php echo sanitizzaTesto($prodotto['immagine']); ?>"
-                            alt="<?php echo sanitizzaTesto($prodotto['nome']); ?>">
+                        <?php if (!empty($prodotto['immagine'])): ?>
+                            <img
+                                src="<?php echo sanitizzaTesto($prodotto['immagine'] ?? ''); ?>"
+                                alt="<?php echo sanitizzaTesto($prodotto['nome'] ?? ''); ?>">
+                        <?php else: ?>
+                            <div class="card-placeholder">🪡</div>
+                        <?php endif; ?>
                     </div>
                 </a>
 

@@ -24,15 +24,6 @@
 
 body {
     background-color: var(--colore-sfondo);
-    /* colore di fallback se l'immagine non carica */
-    /*background-image: url('../images/sfondo.jpg');*/
-    background-size: cover;
-    /* copre tutta la pagina */
-    background-position: center;
-    /* centra l'immagine */
-    background-attachment: fixed;
-    /* l'immagine rimane ferma mentre scorri */
-    background-repeat: no-repeat;
     color: var(--colore-testo);
     display: flex;
     flex-direction: column;
@@ -95,8 +86,23 @@ body {
    ============================================================ */
 .griglia-prodotti {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 colonne fisse su desktop */
     gap: 30px;
+}
+
+/* Tablet: 2 colonne */
+@media (max-width: 1024px) {
+    .griglia-prodotti {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile: 1 colonna */
+@media (max-width: 600px) {
+    .griglia-prodotti {
+        grid-template-columns: 1fr;
+    }
 }
 
 .card {
@@ -123,6 +129,18 @@ body {
     height: 250px;
     object-fit: cover;
     display: block;
+}
+
+/* Placeholder quando il prodotto non ha ancora un'immagine */
+.card-placeholder {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background-color: #f0ede8;
+    color: var(--colore-primario);
 }
 
 .card-info {

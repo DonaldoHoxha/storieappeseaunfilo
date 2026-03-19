@@ -31,6 +31,29 @@ body {
 }
 
 /* ============================================================
+   SFONDI PER PAGINA
+   ============================================================ */
+
+/* Pagina dettaglio prodotto */
+body.pagina-prodotto {
+    background-image: url('../images/sfondo.png');
+    /* ← cambia con il tuo file */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Velatura opzionale per leggibilità (rimuovi se non serve) */
+body.pagina-prodotto::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.55);
+    z-index: -1;
+}
+
+/* ============================================================
    HEADER
    ============================================================ */
 .site-header {

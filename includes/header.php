@@ -10,6 +10,10 @@
 
 $titolo_pagina    = $titolo_pagina    ?? 'StorieAppeseAUnFilo';
 $meta_descrizione = $meta_descrizione ?? 'Ricami artigianali unici, fatti a mano con amore.';
+
+// Classe body automatica dal nome del file (es: prodotto.php → body class="pagina-prodotto")
+$nome_file   = basename($_SERVER['PHP_SELF'], '.php'); // "prodotto", "index", "successo"...
+$classe_body = 'pagina-' . $nome_file;
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -22,7 +26,7 @@ $meta_descrizione = $meta_descrizione ?? 'Ricami artigianali unici, fatti a mano
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css">
 </head>
 
-<body>
+<body class="<?php echo $classe_body; ?>">
 
     <header class="site-header">
         <a href="<?php echo BASE_URL; ?>/index.php" class="logo" style="text-decoration:none;">🪡 StorieAppeseAUnFilo</a>

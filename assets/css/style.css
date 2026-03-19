@@ -25,7 +25,7 @@
 body {
     background-color: var(--colore-sfondo);
     /* colore di fallback se l'immagine non carica */
-    background-image: url('../images/sfondo.jpg');
+    /*background-image: url('../images/sfondo.jpg');*/
     background-size: cover;
     /* copre tutta la pagina */
     background-position: center;

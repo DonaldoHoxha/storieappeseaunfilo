@@ -1,0 +1,509 @@
+/* ============================================================
+   style.css — Stili principali di StorieAppeseAUnFilo
+   ============================================================ */
+
+/* --- Variabili colore --- */
+:root {
+    --colore-sfondo: #faf9f6;
+    --colore-testo: #333333;
+    --colore-primario: #8b7355;
+    /* marrone/tortora */
+    --colore-bottone: #4a5d23;
+    /* verde oliva */
+}
+
+/* --- Reset base --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--colore-sfondo);
+    /* colore di fallback se l'immagine non carica */
+    background-image: url('../images/sfondo.jpg');
+    background-size: cover;
+    /* copre tutta la pagina */
+    background-position: center;
+    /* centra l'immagine */
+    background-attachment: fixed;
+    /* l'immagine rimane ferma mentre scorri */
+    background-repeat: no-repeat;
+    color: var(--colore-testo);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.site-header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--colore-primario);
+}
+
+.site-header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--colore-testo);
+    transition: color 0.2s;
+}
+
+.site-header nav a:hover {
+    color: var(--colore-primario);
+}
+
+/* ============================================================
+   LAYOUT GENERALE
+   ============================================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+    /* spinge il footer in fondo */
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.intro h1 {
+    font-size: 2rem;
+    color: var(--colore-primario);
+    margin-bottom: 10px;
+}
+
+/* ============================================================
+   GRIGLIA PRODOTTI (Home)
+   ============================================================ */
+.griglia-prodotti {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.media-container img,
+.media-container video {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.card-info h2 a {
+    text-decoration: none;
+    color: var(--colore-testo);
+    transition: color 0.2s;
+}
+
+.card-info h2 a:hover {
+    color: var(--colore-primario);
+}
+
+.prezzo {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: var(--colore-primario);
+}
+
+/* ============================================================
+   BOTTONE ACQUISTA
+   ============================================================ */
+.btn-acquista {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--colore-bottone);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.btn-acquista:hover {
+    background-color: #3b4a1c;
+}
+
+/* ============================================================
+   PAGINA DETTAGLIO PRODOTTO
+   ============================================================ */
+.prodotto-dettaglio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.prodotto-media img,
+.prodotto-media video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.prodotto-info h1 {
+    font-size: 2rem;
+    color: var(--colore-primario);
+    margin-bottom: 15px;
+}
+
+.prodotto-descrizione {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.prodotto-nota {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.link-torna {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--colore-primario);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.link-torna:hover {
+    text-decoration: underline;
+}
+
+/* Responsive: prodotto dettaglio su mobile */
+@media (max-width: 768px) {
+    .prodotto-dettaglio {
+        grid-template-columns: 1fr;
+    }
+
+    .site-header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ============================================================
+   PAGINA SUCCESSO
+   ============================================================ */
+.successo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.successo-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 50px 40px;
+    max-width: 550px;
+    text-align: center;
+}
+
+.successo-icona {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.successo-card h1 {
+    font-size: 2rem;
+    color: var(--colore-primario);
+    margin-bottom: 15px;
+}
+
+.successo-testo {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.successo-nota {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+    background-color: white;
+    border-top: 1px solid #eee;
+    padding: 30px 50px;
+    margin-top: auto;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--colore-primario);
+}
+
+.footer-tagline {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.footer-nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: var(--colore-testo);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+    color: var(--colore-primario);
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* ============================================================
+   FILTRI CATEGORIA
+   ============================================================ */
+.filtri-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+.btn-filtro {
+    padding: 8px 20px;
+    border: 2px solid var(--colore-primario);
+    border-radius: 25px;
+    background: transparent;
+    color: var(--colore-primario);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+.btn-filtro:hover {
+    background: var(--colore-primario);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-filtro.attivo {
+    background: var(--colore-primario);
+    color: white;
+}
+
+/* Card nascosta durante il filtro */
+.card.nascosta {
+    display: none;
+}
+
+/* Animazione apparizione card */
+.card.visibile {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.filtri-vuoti {
+    text-align: center;
+    color: #888;
+    margin-top: 30px;
+    font-size: 1rem;
+}
+
+/* ============================================================
+   CAROUSEL
+   ============================================================ */
+.carousel {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: #f0ede8;
+    user-select: none;
+}
+
+/* Track: contiene tutte le slide affiancate */
+.carousel-track {
+    position: relative;
+    width: 100%;
+}
+
+/* Ogni slide è sovrapposta — solo quella .attiva è visibile */
+.carousel-slide {
+    display: none;
+    width: 100%;
+}
+
+.carousel-slide.attiva {
+    display: block;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    /* Animazione dissolvenza */
+    animation: fadeSlide 0.5s ease;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Frecce --- */
+.carousel-freccia {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-freccia:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+    left: 12px;
+}
+
+.carousel-next {
+    right: 12px;
+}
+
+/* --- Puntini --- */
+.carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    padding: 0;
+}
+
+.carousel-dot.attivo {
+    background: white;
+    transform: scale(1.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-slide img {
+        height: 260px;
+    }
+
+    .carousel-freccia {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+}

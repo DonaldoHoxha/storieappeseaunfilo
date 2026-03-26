@@ -5,6 +5,9 @@
 //      require_once __DIR__ . '/includes/db.php';
 // ============================================================
 
+// --- Configurazione generale ---
+require_once __DIR__ . '/config.php';
+
 // --- URL base del progetto (funziona in qualsiasi sottocartella) ---
 // Es: localhost/web/storieappese → BASE_URL = '/web/storieappese'
 define('BASE_URL', rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\'));

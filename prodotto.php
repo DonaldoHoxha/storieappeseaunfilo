@@ -105,6 +105,12 @@ require_once __DIR__ . '/includes/header.php';
             Acquista Ora
         </button>
 
+        <!-- Bottone ordine personalizzato -->
+        <a href="<?php echo BASE_URL; ?>/ordine.php?ref=<?php echo (int)$prodotto['id']; ?>"
+            class="btn-ordine">
+            ✂️ Vuoi qualcosa di simile? Crea un ordine personalizzato
+        </a>
+
         <a href="<?php echo BASE_URL; ?>/index.php" class="link-torna">← Torna a tutti i prodotti</a>
     </div>
 

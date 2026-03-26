@@ -43,6 +43,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ============================================================
+    //  Pagina Ordine — Tab, Upload preview, Selezione prodotto
+    // ============================================================
+
+    // --- Tab ---
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const target = this.dataset.tab;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('attivo'));
+            document.querySelectorAll('.tab-contenuto').forEach(c => c.classList.remove('attivo'));
+            this.classList.add('attivo');
+            document.getElementById('tab-' + target)?.classList.add('attivo');
+        });
+    });
+
+    // --- Apertura tab prodotti se arriva con ?ref= ---
+    const refInput = document.getElementById('prodotto_riferimento');
+    if (refInput && parseInt(refInput.value) > 0) {
+        document.querySelector('.tab-btn[data-tab="prodotti"]')?.click();
+    }
+
+    // --- Upload preview ---
+    const uploadInput = document.getElementById('immagine_upload');
+    const uploadPreview = document.getElementById('upload-preview');
+    const previewImg = document.getElementById('preview-img');
+    const rimuoviBtn = document.getElementById('rimuovi-preview');
+    const uploadLabel = document.querySelector('.upload-label');
+    const uploadArea = document.getElementById('upload-area');
+
+    if (uploadInput) {
+        uploadInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                previewImg.src = e.target.result;
+                uploadPreview.style.display = 'flex';
+                uploadLabel.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        });
+
+        rimuoviBtn?.addEventListener('click', () => {
+            uploadInput.value = '';
+            uploadPreview.style.display = 'none';
+            uploadLabel.style.display = 'flex';
+            previewImg.src = '';
+        });
+
+        // Drag & drop
+        uploadArea?.addEventListener('dragover', e => {
+            e.preventDefault();
+            uploadArea.classList.add('drag-over');
+        });
+        uploadArea?.addEventListener('dragleave', () => uploadArea.classList.remove('drag-over'));
+        uploadArea?.addEventListener('drop', e => {
+            e.preventDefault();
+            uploadArea.classList.remove('drag-over');
+            uploadInput.files = e.dataTransfer.files;
+            uploadInput.dispatchEvent(new Event('change'));
+        });
+    }
+
+    // --- Selezione prodotto come riferimento ---
+    document.querySelectorAll('.prodotto-thumb').forEach(thumb => {
+        thumb.addEventListener('click', function () {
+            const id = this.dataset.id;
+            const hidden = document.getElementById('prodotto_riferimento');
+
+            if (this.classList.contains('selezionato')) {
+                // Deseleziona
+                this.classList.remove('selezionato');
+                hidden.value = '0';
+            } else {
+                document.querySelectorAll('.prodotto-thumb').forEach(t => t.classList.remove('selezionato'));
+                this.classList.add('selezionato');
+                hidden.value = id;
+            }
+        });
+    });
+
+
+    // ============================================================
     //  Bottoni acquisto
     // ============================================================
     const bottoniAcquisto = document.querySelectorAll('.btn-acquista');
